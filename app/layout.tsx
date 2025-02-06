@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
 import { Navbar } from '@/components/Navbar/Navbar'
+import { ReactQueryProvider } from '@/components/ReactQueryProvider/ReactQueryProvider'
 
 const montserrat = Montserrat({
   variable: "--font-montserrat",
@@ -21,8 +22,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${montserrat.className} antialiased`}>
       <body>
+      <ReactQueryProvider>
       <Navbar/>
         {children}
+      </ReactQueryProvider>
       </body>
     </html>
   );
