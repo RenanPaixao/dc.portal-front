@@ -112,6 +112,7 @@ export function AutoComplete<T extends string>({
                 <CommandGroup>
                   {items.map((option) => (
                     <CommandItem
+                      className={'cursor-pointer'}
                       key={option.value}
                       value={option.value}
                       onMouseDown={(e) => e.preventDefault()}
