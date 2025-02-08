@@ -1,17 +1,17 @@
-import { cn } from "@/lib/utils";
-import { Command as CommandPrimitive } from "cmdk";
-import { Check } from "lucide-react";
-import { useMemo, useState } from "react";
+import { cn } from '@/lib/utils'
+import { Command as CommandPrimitive } from 'cmdk'
+import { Check } from 'lucide-react'
+import { useMemo, useState } from 'react'
 import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandItem,
-  CommandList,
-} from "@/components/common/Command/Command";
-import { Input } from "@/components/common/Input/Input";
-import { Popover, PopoverAnchor, PopoverContent } from "@/components/common/Popover/Popover";
-import { Skeleton } from "@/components/common/Skeleton/Skeleton";
+  CommandList
+} from '@/components/common/Command/Command'
+import { Input } from '@/components/common/Input/Input'
+import { Popover, PopoverAnchor, PopoverContent } from '@/components/common/Popover/Popover'
+import { Skeleton } from '@/components/common/Skeleton/Skeleton'
 
 type Props<T extends string> = {
   selectedValue: T;
@@ -25,52 +25,52 @@ type Props<T extends string> = {
 };
 
 export function AutoComplete<T extends string>({
-                                                 selectedValue,
-                                                 onSelectedValueChange,
-                                                 searchValue,
-                                                 onSearchValueChange,
-                                                 items,
-                                                 isLoading,
-                                                 emptyMessage = "Nenhum Resultado",
-                                                 placeholder = "Buscar...",
-                                               }: Props<T>) {
-  const [open, setOpen] = useState(false);
-  
+  selectedValue,
+  onSelectedValueChange,
+  searchValue,
+  onSearchValueChange,
+  items,
+  isLoading,
+  emptyMessage = 'Nenhum Resultado',
+  placeholder = 'Buscar...'
+}: Props<T>) {
+  const [open, setOpen] = useState(false)
+
   const labels = useMemo(
     () =>
       items.reduce((acc, item) => {
-        acc[item.value] = item.label;
-        return acc;
+        acc[item.value] = item.label
+        return acc
       }, {} as Record<string, string>),
     [items]
-  );
-  
+  )
+
   const reset = () => {
-    onSelectedValueChange("" as T);
-    onSearchValueChange("");
-  };
-  
+    onSelectedValueChange('' as T)
+    onSearchValueChange('')
+  }
+
   const onInputBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     if (
-      !e.relatedTarget?.hasAttribute("cmdk-list") &&
+      !e.relatedTarget?.hasAttribute('cmdk-list') &&
       labels[selectedValue] !== searchValue
     ) {
-      reset();
+      reset()
     }
-  };
-  
+  }
+
   const onSelectItem = (inputValue: string) => {
     if (inputValue === selectedValue) {
-      reset();
+      reset()
     } else {
-      onSelectedValueChange(inputValue as T);
-      onSearchValueChange(labels[inputValue] ?? "");
+      onSelectedValueChange(inputValue as T)
+      onSearchValueChange(labels[inputValue] ?? '')
     }
-    setOpen(false);
-  };
-  
+    setOpen(false)
+  }
+
   return (
-    <div className="flex items-center">
+    <div className='flex items-center'>
       <Popover open={open} onOpenChange={setOpen}>
         <Command shouldFilter={false}>
           <PopoverAnchor asChild>
@@ -78,52 +78,52 @@ export function AutoComplete<T extends string>({
               asChild
               value={searchValue}
               onValueChange={onSearchValueChange}
-              onKeyDown={(e) => setOpen(e.key !== "Escape")}
-              onMouseDown={() => setOpen((open) => !!searchValue || !open)}
+              onKeyDown={e => setOpen(e.key !== 'Escape')}
+              onMouseDown={() => setOpen(open => !!searchValue || !open)}
               onFocus={() => setOpen(true)}
               onBlur={onInputBlur}
             >
               <Input placeholder={placeholder} />
             </CommandPrimitive.Input>
           </PopoverAnchor>
-          {!open && <CommandList aria-hidden="true" className="hidden" />}
+          {!open && <CommandList aria-hidden='true' className='hidden' />}
           <PopoverContent
             asChild
-            onOpenAutoFocus={(e) => e.preventDefault()}
-            onInteractOutside={(e) => {
+            onOpenAutoFocus={e => e.preventDefault()}
+            onInteractOutside={e => {
               if (
                 e.target instanceof Element &&
-                e.target.hasAttribute("cmdk-input")
+                e.target.hasAttribute('cmdk-input')
               ) {
-                e.preventDefault();
+                e.preventDefault()
               }
             }}
-            className="w-[--radix-popover-trigger-width] p-0"
+            className='w-[--radix-popover-trigger-width] p-0'
           >
             <CommandList>
               {isLoading && (
                 <CommandPrimitive.Loading>
-                  <div className="p-1">
-                    <Skeleton className="h-6 w-full" />
+                  <div className='p-1'>
+                    <Skeleton className='h-6 w-full' />
                   </div>
                 </CommandPrimitive.Loading>
               )}
               {items.length > 0 && !isLoading ? (
                 <CommandGroup>
-                  {items.map((option) => (
+                  {items.map(option => (
                     <CommandItem
                       className={'cursor-pointer'}
                       key={option.value}
                       value={option.value}
-                      onMouseDown={(e) => e.preventDefault()}
+                      onMouseDown={e => e.preventDefault()}
                       onSelect={onSelectItem}
                     >
                       <Check
                         className={cn(
-                          "mr-2 h-4 w-4",
+                          'mr-2 h-4 w-4',
                           selectedValue === option.value
-                            ? "opacity-100"
-                            : "opacity-0"
+                            ? 'opacity-100'
+                            : 'opacity-0'
                         )}
                       />
                       {option.label}
@@ -132,12 +132,12 @@ export function AutoComplete<T extends string>({
                 </CommandGroup>
               ) : null}
               {!isLoading ? (
-                <CommandEmpty>{emptyMessage ?? "No items."}</CommandEmpty>
+                <CommandEmpty>{emptyMessage ?? 'No items.'}</CommandEmpty>
               ) : null}
             </CommandList>
           </PopoverContent>
         </Command>
       </Popover>
     </div>
-  );
+  )
 }

@@ -11,20 +11,20 @@ interface IProps{
 export const SearchInput = ({ className }: IProps) => {
   const [searchValue, setSearchValue] = useState('')
   const [selectedValue, setSelectedValue] = useState('')
-  
-  const {data, mutate, isPending} = useSearch()
-  
+
+  const { data, mutate, isPending } = useSearch()
+
   const transformDataIntoOptions = () => {
-    if(!data || searchValue === ''){
+    if (!data || searchValue === '') {
       return []
     }
-    
-    return [...data.courses, ...data.professors].map((item) => ({
+
+    return [...data.courses, ...data.professors].map(item => ({
       value: item.id,
       label: item.name
     }))
   }
-  
+
   return <div className={className}>
     <AutoComplete
       isLoading={isPending}
@@ -32,11 +32,12 @@ export const SearchInput = ({ className }: IProps) => {
       selectedValue={selectedValue}
       onSelectedValueChange={setSelectedValue}
       searchValue={searchValue}
-      onSearchValueChange={(value) => {
+      onSearchValueChange={value => {
         setSearchValue(value)
-        const debouncedMutate = debounce({delay: 500}, mutate)
+        const debouncedMutate = debounce({ delay: 500 }, mutate)
         debouncedMutate(value)
       }}
-      items={transformDataIntoOptions()}/>
+      items={transformDataIntoOptions()}
+    />
   </div>
 }
