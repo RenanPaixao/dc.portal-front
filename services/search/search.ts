@@ -1,8 +1,7 @@
 import axios from 'axios'
-import { useMutation, useQuery } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import { Course } from '@/services/courses/courses'
 import { Professor } from '@/services/professors/professors'
-import { debounce } from 'radash'
 
 const instance = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_API_URL}`,

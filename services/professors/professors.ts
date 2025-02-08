@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useQuery } from '@tanstack/react-query'
+import { Options } from '@/services/types'
 
 export interface Professor	{
   "id": string,
@@ -12,11 +13,6 @@ const instance = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_API_URL}`,
   timeout: 3000,
 })
-
-interface Options {
-  offset?: number
-  limit?: number
-}
 
 export const useGetAllProfessors = (options?: Options) => {
   return useQuery({
