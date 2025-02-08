@@ -11,7 +11,25 @@ const montserrat = Montserrat({
 
 export const metadata: Metadata = {
   title: 'PORTAL DC',
-  description: 'Portal para as disciplinas do departamento de computação da UFRPE'
+  description: 'Portal para as disciplinas do departamento de computação da UFRPE',
+  manifest: '/site.webmanifest',
+  icons: [
+    {
+      url: '/favicon-32x32.png',
+      sizes: '16x16',
+      type: 'image/png'
+    },
+    {
+      url: '/favicon-32x32.png',
+      sizes: '32x32',
+      type: 'image/png'
+    },
+    {
+      url: '/apple-touch-icon.png',
+      sizes: '180x180',
+      type: 'image/png'
+    }
+  ]
 }
 
 export default function RootLayout({
