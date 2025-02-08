@@ -104,7 +104,9 @@ export function AutoComplete<T extends string>({
               {isLoading && (
                 <CommandPrimitive.Loading>
                   <div className='p-1'>
-                    <Skeleton className='h-6 w-full' />
+                    <Skeleton className='h-6 w-full text-gray-500 text-center'>
+                      Carregando...
+                    </Skeleton>
                   </div>
                 </CommandPrimitive.Loading>
               )}
