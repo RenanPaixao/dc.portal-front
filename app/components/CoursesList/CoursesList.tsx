@@ -1,19 +1,16 @@
-'use client'
+
 import { cn } from '@/lib/utils'
-import { Button } from '@/components/common/Button/Button'
-import { useGetAllCourses } from '@/services/courses/courses'
+import { Button } from '@/app/components/common/Button/Button'
+import { Course } from '@/services/courses/courses'
 
 interface IProps{
   className?: string
+  courses: Course[]
 }
 
-export const CoursesList = ({ className }: IProps) => {
-  const { data, isLoading, isError } = useGetAllCourses()
-
+export const CoursesList = ({ className, courses }: IProps) => {
   return <div className={cn('bg-[#D6E6FF] text-secondary-foreground p-10 flex flex-col space-y-8 rounded-md', className)}>
-    {isLoading && <div>Carregando...</div>}
-    {isError && <div>Ocorreu um erro ao carregar a lista de disciplinas</div>}
-    {data && data.map(course => (
+    {courses.map(course => (
       <div key={course.id} className={'flex bg-white items-center justify-between gap-3 border p-3 rounded-md border-blue-400'}>
         <div className={'flex items-center gap-5'}>
           <p className={'capitalize line-clamp-1'}>{course.name}</p>

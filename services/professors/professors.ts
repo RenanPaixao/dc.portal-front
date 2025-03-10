@@ -1,6 +1,5 @@
-import axios from 'axios'
-import { useQuery } from '@tanstack/react-query'
 import { Options } from '@/services/types'
+import { env } from '@/env'
 
 export interface Professor	{
   "id": string,
@@ -9,18 +8,8 @@ export interface Professor	{
   "profileImg": string | null
 }
 
-const instance = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_API_URL}`,
-  timeout: 3000,
-})
-
-export const useGetAllProfessors = (options?: Options) => {
-  return useQuery({
-    queryKey: ['professors', options],
-    queryFn: async () => {
-      const {offset = 0, limit = 10 } = options ?? {}
-      const { data } = await instance.get<Professor[]>(`/professors?limit=${limit}&offset=${offset}`)
-      return data
-    },
-  })
+export const getAllProfessors = async (options?: Options): Promise<Professor[]> => {
+  const {offset = 0, limit = 10 } = options ?? {}
+  const response= await fetch(`${env.API_URL}/professors?limit=${limit}&offset=${offset}`)
+  return await response.json()
 }

@@ -1,4 +1,4 @@
-import { SearchInput } from '@/components/SearchInput/SearchInput'
+import { SearchInput } from '@/app/components/SearchInput/SearchInput'
 
 export const Hero = () => (
   <section className='w-full'>

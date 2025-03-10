@@ -1,6 +1,5 @@
-import axios from 'axios'
 import { Options } from '@/services/types'
-import { useQuery } from '@tanstack/react-query'
+import { env } from '@/env'
 
 export interface Course	{
   "id": string,
@@ -10,18 +9,8 @@ export interface Course	{
   period: number | null
 }
 
-const instance = axios.create({
-  baseURL: `${process.env.NEXT_PUBLIC_API_URL}`,
-  timeout: 3000,
-})
-
-export const useGetAllCourses = (options?: Options) => {
-  return useQuery({
-    queryKey: ['courses', options],
-    queryFn: async () => {
+export const getAllCourses = async (options?: Options) => {
       const {offset = 0, limit = 10 } = options ?? {}
-      const { data } = await instance.get<Course[]>(`/courses?limit=${limit}&offset=${offset}`)
-      return data
-    },
-  })
+      const response = await fetch(`${env.API_URL}/courses?limit=${limit}&offset=${offset}`)
+      return await response.json()
 }

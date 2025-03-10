@@ -1,4 +1,4 @@
-import { Button } from '@/components/common/Button/Button'
+import { Button } from '@/app/components/common/Button/Button'
 import { CircleUserRound } from 'lucide-react'
 
 export const Navbar = () => {

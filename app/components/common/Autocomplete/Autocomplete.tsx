@@ -8,10 +8,10 @@ import {
   CommandGroup,
   CommandItem,
   CommandList
-} from '@/components/common/Command/Command'
-import { Input } from '@/components/common/Input/Input'
-import { Popover, PopoverAnchor, PopoverContent } from '@/components/common/Popover/Popover'
-import { Skeleton } from '@/components/common/Skeleton/Skeleton'
+} from '@/app/components/common/Command/Command'
+import { Input } from '@/app/components/common/Input/Input'
+import { Popover, PopoverAnchor, PopoverContent } from '@/app/components/common/Popover/Popover'
+import { Skeleton } from '@/app/components/common/Skeleton/Skeleton'
 
 type Props<T extends string> = {
   selectedValue: T;

@@ -1,6 +1,6 @@
-'use client'
+
 import { useState } from 'react'
-import { AutoComplete } from '@/components/common/Autocomplete/Autocomplete'
+import { AutoComplete } from '@/app/components/common/Autocomplete/Autocomplete'
 import { useSearch } from '@/services/search/search'
 import { debounce } from 'radash'
 
