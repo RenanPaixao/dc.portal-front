@@ -25,8 +25,7 @@ export default function Index() {
   const {professors, courses} = useLoaderData<typeof loader>()
   return (
     <main>
-      {/*TODO: Update to use a Form component*/}
-      {/*<Hero/>*/}
+      <Hero/>
       <section className={'w-full grid grid-cols-1 gap-4 justify-items-center px-4 py-8 lg:grid-cols-2'}>
         <div className={'container'}>
           <h2

@@ -1,7 +1,8 @@
 import { Course } from '@/services/courses/courses'
 import { Professor } from '@/services/professors/professors'
+import { env } from '@/env'
 
-interface SearchResponse {
+export interface SearchResponse {
   courses: Course[]
   professors: Professor[]
 }
@@ -14,6 +15,6 @@ export const search = async (search: string): Promise<SearchResponse> => {
     }
   }
   
-  const response = await fetch(`/search?search=${search}`)
+  const response = await fetch(`${env.API_URL}/search?search=${search}`)
   return response.json()
 }
