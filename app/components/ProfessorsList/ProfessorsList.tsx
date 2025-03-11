@@ -2,13 +2,14 @@
 import { cn } from '@/lib/utils'
 import { Button } from '@/app/components/common/Button/Button'
 import { Professor } from '@/services/professors/professors'
+import { Link } from '@remix-run/react'
 
 interface IProps{
   className?: string
   professors: Professor[]
 }
 
-export default function ProfessorsList ({professors, className}: IProps) {
+export function ProfessorsList ({professors, className}: IProps) {
   return <div className={cn('bg-[#D6E6FF] text-secondary-foreground p-10 flex flex-col space-y-8 rounded-md', className)}>
         {professors?.map(professor => (
             <div key={professor.id} className={'flex bg-white items-center justify-between gap-3 border p-3 rounded-md border-blue-400'}>
@@ -21,6 +22,10 @@ export default function ProfessorsList ({professors, className}: IProps) {
               </div>
             </div>
           ))}
-        <Button>Ver Todos</Button>
+        <Button asChild>
+          <Link to={'/all-professors'}>
+            Ver Todos
+          </Link>
+        </Button>
       </div>
 }

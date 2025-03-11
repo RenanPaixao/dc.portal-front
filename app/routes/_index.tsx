@@ -1,6 +1,6 @@
 import { defer, MetaFunction } from '@remix-run/node'
 import { Hero } from '~/components/Hero/Hero'
-import ProfessorsList from '~/components/ProfessorsList/ProfessorsList'
+import { ProfessorsList } from '~/components/ProfessorsList/ProfessorsList'
 import { CoursesList } from '~/components/CoursesList/CoursesList'
 import { getAllProfessors } from '@/services/professors/professors'
 import { Suspense } from 'react'
@@ -15,8 +15,10 @@ export const meta: MetaFunction = () => {
 };
 
 export const loader = async () => {
+  const {professors} = await getAllProfessors()
+  
   return defer({
-    professors: await getAllProfessors(),
+    professors,
     courses: await getAllCourses()
   })
 }

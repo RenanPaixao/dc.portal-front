@@ -8,8 +8,17 @@ export interface Professor	{
   "profileImg": string | null
 }
 
-export const getAllProfessors = async (options?: Options): Promise<Professor[]> => {
-  const {offset = 0, limit = 10 } = options ?? {}
-  const response= await fetch(`${env.API_URL}/professors?limit=${limit}&offset=${offset}`)
+interface GetAllProfessorsResponse {
+  count: number | null
+  professors: Professor[]
+}
+
+interface GetAllProfessorsOptions extends Options{
+  count?: boolean
+}
+
+export const getAllProfessors = async (options?: GetAllProfessorsOptions): Promise<GetAllProfessorsResponse> => {
+  const {offset = 0, limit = 10, count = true } = options ?? {}
+  const response= await fetch(`${env.API_URL}/professors?limit=${limit}&offset=${offset}&count=${count}`)
   return await response.json()
 }
