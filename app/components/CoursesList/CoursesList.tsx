@@ -2,6 +2,7 @@
 import { cn } from '@/lib/utils'
 import { Button } from '@/app/components/common/Button/Button'
 import { Course } from '@/services/courses/courses'
+import { Link } from '@remix-run/react'
 
 interface IProps{
   className?: string
@@ -21,6 +22,10 @@ export const CoursesList = ({ className, courses }: IProps) => {
         </div>
       </div>
     ))}
-    <Button>Ver Todos</Button>
+    <Button asChild>
+      <Link prefetch={'intent'} to={'/all-disciplines'}>
+        Ver Todos
+      </Link>
+    </Button>
   </div>
 }

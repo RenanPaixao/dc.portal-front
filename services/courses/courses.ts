@@ -9,7 +9,7 @@ export interface Course	{
   period: number | null
 }
 
-export const getAllCourses = async (options?: Options) => {
+export const getAllCourses = async (options?: Options): Promise<Course[]> => {
       const {offset = 0, limit = 10 } = options ?? {}
       const response = await fetch(`${env.API_URL}/courses?limit=${limit}&offset=${offset}`)
       return await response.json()
