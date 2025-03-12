@@ -10,14 +10,12 @@ export function UserCard({image, name, email}:UserCardProps) {
   
   return (
     <>
-      {/* Cards: User */}
-      <div className="flex flex-col overflow-hidden rounded-lg bg-white shadow-xs dark:bg-gray-800 dark:text-gray-100">
-        {/* Card Cover/Avatar */}
+      <div className="flex flex-col overflow-hidden rounded-lg bg-white shadow-xs dark:bg-gray-800 dark:text-gray-100 border">
         <div
           className="mb-8 bg-cover"
           style={{
             backgroundImage:
-              'url("https://cdn.tailkit.com/media/placeholders/photo-JgOeRuGD_Y4-800x400.jpg")',
+              'url("https://img.freepik.com/free-vector/flat-abstract-background_23-2149123686.jpg?t=st=1741742072~exp=1741745672~hmac=04202d198e98cb2e0de455067b8f4f2de5baa3f197d8a02da335f825c993e572&w=740")',
           }}
         >
           <div className="flex h-32 items-end justify-center">

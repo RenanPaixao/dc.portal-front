@@ -50,6 +50,7 @@ const PaginationLink = ({
                           ...props
                         }: PaginationLinkProps) => (
   <Link
+    prefetch={'intent'}
     to={href}
     aria-current={isActive ? "page" : undefined}
     className={cn(

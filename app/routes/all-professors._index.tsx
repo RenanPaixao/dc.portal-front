@@ -40,8 +40,8 @@ export default function AllProfessors ({ className }: AllProfessorsProps) {
     return `?page=${page}&limit=${limit}&offset=${offset}`
   }
   return <main className={className}>
-    <section className={'p-8 pb-20'}>
-      <h1 className={'text-3xl text-center'}>Professores</h1>
+    <section className={'p-8 pb-32'}>
+      <h1 className={'text-3xl mb-4 md:text-4xl tracking-tighter text-center font-regular'}>Professores</h1>
       <div className={'grid gap-8 grid-cols-4 mt-8'}>
         {professors.map((professor) => (
           <UserCard
