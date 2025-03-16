@@ -1,13 +1,16 @@
 import {
+  Link,
   Links,
   Meta,
   Outlet,
   Scripts,
-  ScrollRestoration,
-} from "@remix-run/react";
+  ScrollRestoration, useLocation
+} from '@remix-run/react'
 import type { LinksFunction } from "@remix-run/node";
 
 import "./tailwind.css";
+import { Button } from '~/components/common/Button/Button'
+import { ArrowLeftIcon } from 'lucide-react'
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -23,8 +26,9 @@ export const links: LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const location = useLocation()
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -32,6 +36,15 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+      {
+        location.pathname !== '/' && (
+          <Button variant={'ghost'} asChild>
+            <Link to={'..'}>
+              <ArrowLeftIcon/> Voltar
+            </Link>
+          </Button>
+        )
+      }
         {children}
         <ScrollRestoration />
         <Scripts />
