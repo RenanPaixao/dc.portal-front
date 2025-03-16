@@ -10,7 +10,10 @@ import { getAllCourses } from '@/services/courses/courses'
 export const meta: MetaFunction = () => {
   return [
     { title: "Home | DC Portal" },
-    { name: `description", content: "Portal de informação do departamento de computação (DC) da UFRPE.` },
+    {
+      name: "description",
+      content: "Portal de informação do departamento de computação (DC) da UFRPE."
+    },
   ];
 };
 
