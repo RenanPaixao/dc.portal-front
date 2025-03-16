@@ -27,25 +27,26 @@ export const meta: MetaFunction = () => {
 
 export async function loader({request}: LoaderFunctionArgs) {
   const url = new URL(request.url)
+  const limit = 12
   
   const data = await getAllProfessors({
-    limit: parseInt(url.searchParams.get('limit') ?? '10'),
+    limit: parseInt(url.searchParams.get('limit') ?? `${limit}`),
     offset: parseInt(url.searchParams.get('offset') ?? '0')
   })
   
-  const totalPages = Math.ceil((data.count ?? 10) / 10)
+  const totalPages = Math.ceil((data.count ?? limit) / limit)
   return {
     currentPage: parseInt(url.searchParams.get('page') ?? '1'),
     totalPages,
-    ...data
+    limit,
+    professors: data.professors
   }
 }
 
 export default function AllProfessors ({ className }: AllProfessorsProps) {
-  const {currentPage, totalPages, professors} = useLoaderData<typeof loader>()
+  const {currentPage, limit, totalPages, professors} = useLoaderData<typeof loader>()
   
   const buildSearchParam = (page: number) => {
-    const limit = 10
     const offset = (page - 1) * limit
     return `?page=${page}&limit=${limit}&offset=${offset}`
   }

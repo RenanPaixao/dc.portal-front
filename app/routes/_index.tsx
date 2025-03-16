@@ -18,11 +18,12 @@ export const meta: MetaFunction = () => {
 };
 
 export const loader = async () => {
-  const {professors} = await getAllProfessors()
+  const {professors} = await getAllProfessors({count: false})
+  const {courses} = await getAllCourses({count: false})
   
   return defer({
     professors,
-    courses: await getAllCourses()
+    courses
   })
 }
 
