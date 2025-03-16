@@ -1,5 +1,5 @@
 import { UserCard } from '~/components/common/UserCard/UserCard'
-import { LoaderFunctionArgs } from '@remix-run/node'
+import { LoaderFunctionArgs, MetaFunction } from '@remix-run/node'
 import { getAllProfessors } from '@/services/professors/professors'
 import {
   Pagination,
@@ -14,6 +14,16 @@ import { cn } from '@/lib/utils'
 interface AllProfessorsProps {
   className ? : string
 }
+
+export const meta: MetaFunction = () => {
+  return [
+    { title: "Professores | DC Portal" },
+    {
+      name: "description",
+      content: "Todos os professores do departamento de computação da UFRPE (DC)."
+    },
+  ];
+};
 
 export async function loader({request}: LoaderFunctionArgs) {
   const url = new URL(request.url)
