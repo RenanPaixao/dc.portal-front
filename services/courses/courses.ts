@@ -9,8 +9,17 @@ export interface Course	{
   period: number | null
 }
 
-export const getAllCourses = async (options?: Options): Promise<Course[]> => {
-      const {offset = 0, limit = 10 } = options ?? {}
-      const response = await fetch(`${env.API_URL}/courses?limit=${limit}&offset=${offset}`)
-      return await response.json()
+interface AllCoursesResponse {
+  courses: Course[],
+  count: number | null
+}
+
+interface AllCoursesOptions extends Options {
+  count?: boolean
+}
+
+export const getAllCourses = async (options?: AllCoursesOptions): Promise<AllCoursesResponse> => {
+    const {offset = 0, limit = 10, count = true } = options ?? {}
+    const response = await fetch(`${env.API_URL}/courses?limit=${limit}&offset=${offset}&count=${count}`)
+    return await response.json()
 }
