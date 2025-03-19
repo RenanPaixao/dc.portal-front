@@ -1,12 +1,11 @@
 import {
-  Link,
   Links,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
   useLocation,
-  useResolvedPath
+  useNavigate,
 } from '@remix-run/react'
 import type { LinksFunction } from "@remix-run/node";
 
@@ -28,9 +27,8 @@ export const links: LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const location = useLocation()
-  
-  const resolvedUrl = useResolvedPath('..')
+  const navigate = useNavigate();
+  const location = useLocation();
   
   return (
     <html lang="pt-BR">
@@ -43,10 +41,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <body>
       {
         location.pathname !== '/' && (
-          <Button variant={'ghost'} asChild>
-            <Link to={resolvedUrl} reloadDocument>
+          <Button variant={'ghost'} onClick={() => navigate(-1)}>
               <ArrowLeftIcon/> Voltar
-            </Link>
           </Button>
         )
       }
