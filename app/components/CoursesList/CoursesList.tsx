@@ -18,7 +18,11 @@ export const CoursesList = ({ className, courses }: IProps) => {
         </div>
         <div className={'flex gap-3'}>
           <div className={'self-stretch border-l border-blue-400 w-[1px] bg-blue-950'} />
-          <Button variant={'outline'}>Ver mais...</Button>
+          <Button variant={'outline'} asChild>
+            <Link to={`/disciplines/${course.id}`}>
+              Ver mais...
+            </Link>
+          </Button>
         </div>
       </div>
     ))}

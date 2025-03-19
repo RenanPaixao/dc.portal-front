@@ -7,7 +7,6 @@ interface UserCardProps{
 }
 
 export function UserCard({image, name, email}:UserCardProps) {
-  
   return (
     <>
       <div className="flex flex-col overflow-hidden rounded-lg bg-white shadow-xs dark:bg-gray-800 dark:text-gray-100 border">
@@ -28,18 +27,14 @@ export function UserCard({image, name, email}:UserCardProps) {
             </div>
           </div>
         </div>
-        {/* END Card Cover/Avatar */}
         
-        {/* Card Body */}
         <div className="grow p-5 text-center">
           <h3 className="mt-3 mb-1 text-lg font-semibold">{name}</h3>
           <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
             {email}
           </p>
         </div>
-        {/* END Card Body */}
       </div>
-      {/* END Cards: User */}
     </>
   );
 }

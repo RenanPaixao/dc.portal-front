@@ -23,3 +23,8 @@ export const getAllCourses = async (options?: AllCoursesOptions): Promise<AllCou
     const response = await fetch(`${env.API_URL}/courses?limit=${limit}&offset=${offset}&count=${count}`)
     return await response.json()
 }
+
+export const getCourseById = async (id: string): Promise<Course> => {
+    const response = await fetch(`${env.API_URL}/courses/${id}`)
+    return await response.json()
+}
