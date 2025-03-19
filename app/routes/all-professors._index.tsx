@@ -50,12 +50,13 @@ export default function AllProfessors ({ className }: AllProfessorsProps) {
     const offset = (page - 1) * limit
     return `?page=${page}&limit=${limit}&offset=${offset}`
   }
-  return <main className={className}>
+  return <main className={'bg-gradient-to-r from-blue-200 to-cyan-200' + ' ' + className} >
     <section className={'p-8 pb-32'}>
-      <h1 className={'text-3xl mb-4 md:text-4xl tracking-tighter text-center font-regular'}>Professores</h1>
+      <h1 className={'text-3xl text-white bg-blue-950 max-w-fit mx-auto rounded-xl mb-16 p-4 py-2 md:text-4xl tracking-tighter text-center font-regular'}>Professores</h1>
       <div className={'grid gap-8 grid-cols-4 mt-8'}>
         {professors.map((professor) => (
           <UserCard
+            id={professor.id}
             key={professor.id}
             image={professor.profileImg ?? undefined}
             email={professor.email}

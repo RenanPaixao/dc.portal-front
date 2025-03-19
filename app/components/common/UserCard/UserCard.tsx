@@ -1,15 +1,20 @@
 import profile from '~/assets/profile.svg'
+import { Link } from '@remix-run/react'
 
 interface UserCardProps{
+  id: string
   image?: string
   name?: string
   email?: string
 }
 
-export function UserCard({image, name, email}:UserCardProps) {
+export function UserCard({image, id, name, email}:UserCardProps) {
   return (
     <>
-      <div className="flex flex-col overflow-hidden rounded-lg bg-white shadow-xs dark:bg-gray-800 dark:text-gray-100 border">
+      <Link
+        className="flex flex-col overflow-hidden rounded-lg bg-white shadow-xs dark:bg-gray-800 dark:text-gray-100 border shadow-xs transition hover:cursor-pointer hover:border-blue-600"
+        to={`/professors/${id}`}
+      >
         <div
           className="mb-8 bg-cover"
           style={{
@@ -34,7 +39,7 @@ export function UserCard({image, name, email}:UserCardProps) {
             {email}
           </p>
         </div>
-      </div>
+      </Link>
     </>
   );
 }
