@@ -37,9 +37,6 @@ export async function loader({request}: LoaderFunctionArgs){
 }
 
 export function Layout({ children }: { children: React.ReactNode }) {
-  const navigate = useNavigate();
-  const location = useLocation();
-  
   return (
     <html lang="pt-BR">
       <head>
@@ -49,14 +46,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
-      <Navbar />
-      {
-        location.pathname !== '/' && (
-          <Button variant={'ghost'} onClick={() => navigate(-1)}>
-              <ArrowLeftIcon/> Voltar
-          </Button>
-        )
-      }
+        <Navbar />
         {children}
         <ScrollRestoration />
         <Scripts />
