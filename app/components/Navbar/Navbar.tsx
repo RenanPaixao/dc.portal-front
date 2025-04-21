@@ -1,5 +1,5 @@
 import { Button } from '@/app/components/common/Button/Button'
-import { CircleUserRound, LogOut } from 'lucide-react'
+import { LogOut } from 'lucide-react'
 import { Form } from '@remix-run/react'
 import { useUser } from '~/hooks/useUser'
 
@@ -14,7 +14,7 @@ export const Navbar = () => {
         </Form>
       ) : (
         <Form method={'post'} action={'/auth/google'} navigate={false}>
-          <Button> <CircleUserRound /> Login</Button>
+          <Button variant={'outline'}> <img src={'google-logo.svg'} alt={'logo da google'}/> Login</Button>
         </Form>
       )
     }
