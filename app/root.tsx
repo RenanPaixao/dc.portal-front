@@ -4,14 +4,10 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLocation,
-  useNavigate,
 } from '@remix-run/react'
 import type { LinksFunction, LoaderFunctionArgs } from '@remix-run/node'
 
 import "./tailwind.css";
-import { Button } from '~/components/common/Button/Button'
-import { ArrowLeftIcon } from 'lucide-react'
 import { Navbar } from '~/components/Navbar/Navbar'
 import { SessionStorage } from '~/services/session.server'
 

@@ -12,7 +12,8 @@ import { FeatureBox } from '~/components/common/FeatureBox'
 import { title } from 'radash'
 import { BookCopy } from 'lucide-react'
 
-interface AllProfessorsProps {
+// TODO: Investigate why is being possible to advance to the next page when there are no more items
+interface AllDisciplinesProps {
   className? : string
 }
 
@@ -35,7 +36,7 @@ export async function loader({request}: LoaderFunctionArgs) {
   }
 }
 
-export default function AllDisciplines ({ className }: AllProfessorsProps) {
+export default function AllDisciplines ({ className }: AllDisciplinesProps) {
   const {currentPage, limit, courses, totalPages} = useLoaderData<typeof loader>()
   
   const buildSearchParam = (page: number) => {

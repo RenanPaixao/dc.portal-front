@@ -11,6 +11,7 @@ import { useLoaderData } from '@remix-run/react'
 import { title } from 'radash'
 import { cn } from '@/lib/utils'
 
+// TODO: expand the list container to fill the screen when we have only few professors on last page
 interface AllProfessorsProps {
   className ? : string
 }

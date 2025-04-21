@@ -2,18 +2,16 @@
 import { useState } from 'react'
 import { AutoComplete } from '@/app/components/common/Autocomplete/Autocomplete'
 import { debounce } from 'radash'
-import { useFetcher } from '@remix-run/react'
+import { useFetcher, useNavigate } from '@remix-run/react'
 import { SearchResponse } from '@/services/search/search'
 
 interface SearchInputProps{
   className?: string
 }
 
-// TODO: Redirect to selected item details page
-// TODO: Move this component to resources.search.tsx
 export const SearchInput = ({ className }: SearchInputProps) => {
+  const navigate = useNavigate()
   const [searchValue, setSearchValue] = useState('')
-  const [selectedValue, setSelectedValue] = useState('')
   
   const fetcher = useFetcher<SearchResponse>()
   const transformDataIntoOptions = () => {
@@ -28,12 +26,31 @@ export const SearchInput = ({ className }: SearchInputProps) => {
     }))
   }
   
+  const redirectToItemPage = (value: string) => {
+    const isProfessor = fetcher.data?.professors.some(item => item.id === value)
+    const isCourse = fetcher.data?.courses.some(item => item.id === value)
+    
+    if (isProfessor) {
+      navigate(`/professors/${value}`)
+      return
+    }
+    
+    if(isCourse) {
+      navigate(`/disciplines/${value}`)
+      return
+    }
+    
+    throw new Error(`Could not find option ${value}`)
+  }
+  
   return <div className={className}>
     <AutoComplete
       isLoading={fetcher.state !== 'idle'}
       placeholder={'Buscar disciplina ou professor'}
-      selectedValue={selectedValue}
-      onSelectedValueChange={setSelectedValue}
+      selectedValue={''}
+      onSelectedValueChange={(value) => {
+        redirectToItemPage(value)
+      }}
       searchValue={searchValue}
       onSearchValueChange={value => {
         setSearchValue(value)
