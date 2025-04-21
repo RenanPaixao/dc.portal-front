@@ -7,11 +7,13 @@ import {
   useLocation,
   useNavigate,
 } from '@remix-run/react'
-import type { LinksFunction } from "@remix-run/node";
+import type { LinksFunction, LoaderFunctionArgs } from '@remix-run/node'
 
 import "./tailwind.css";
 import { Button } from '~/components/common/Button/Button'
 import { ArrowLeftIcon } from 'lucide-react'
+import { Navbar } from '~/components/Navbar/Navbar'
+import { SessionStorage } from '~/services/session.server'
 
 export const links: LinksFunction = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -26,6 +28,14 @@ export const links: LinksFunction = () => [
   },
 ];
 
+export async function loader({request}: LoaderFunctionArgs){
+  const session = await SessionStorage.getSession(request.headers.get("Cookie"));
+  
+  return {
+    user: session.get('user') || null,
+  }
+}
+
 export function Layout({ children }: { children: React.ReactNode }) {
   const navigate = useNavigate();
   const location = useLocation();
@@ -39,6 +49,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Links />
       </head>
       <body>
+      <Navbar />
       {
         location.pathname !== '/' && (
           <Button variant={'ghost'} onClick={() => navigate(-1)}>

@@ -264,6 +264,11 @@
     "@babel/helper-string-parser" "^7.25.9"
     "@babel/helper-validator-identifier" "^7.25.9"
 
+"@edgefirst-dev/data@^0.0.4":
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/@edgefirst-dev/data/-/data-0.0.4.tgz#52727fad8d9ad7ca9d01280a5ec33b5f6b0bc55b"
+  integrity sha512-VLhlvEPDJ0Sd0pE6sAYTQkIqZCXVonaWlgRJIQQHzfjTXCadF77qqHj5NxaPSc4wCul0DJO/0MnejVqJAXUiRg==
+
 "@emnapi/core@^1.3.1":
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/@emnapi/core/-/core-1.3.1.tgz#9c62d185372d1bddc94682b87f376e03dfac3f16"
@@ -906,6 +911,11 @@
     unist-util-visit "^4.0.0"
     vfile "^5.0.0"
 
+"@mjackson/headers@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@mjackson/headers/-/headers-0.10.0.tgz#89dff58fd1287024e5c0c7ca4a83831551e164d6"
+  integrity sha512-U1Eu1gF979k7ZoIBsJyD+T5l9MjtPONsZfoXfktsQHPJD0s7SokBGx+tLKDLsOY+gzVYAWS0yRFDNY8cgbQzWQ==
+
 "@napi-rs/wasm-runtime@^0.2.7":
   version "0.2.7"
   resolved "https://registry.yarnpkg.com/@napi-rs/wasm-runtime/-/wasm-runtime-0.2.7.tgz#288f03812a408bc53c2c3686c65f38fe90f295eb"
@@ -981,6 +991,43 @@
   integrity sha512-gGq0NJkIGSwdbUt4yhdF8ZrmkGKVz9vAdVzpOfnom+V8PLSmSOVhZwbNvZZS1EYcJN5hzzKBxmmVVAInM6HQLg==
   dependencies:
     which "^3.0.0"
+
+"@oslojs/asn1@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@oslojs/asn1/-/asn1-1.0.0.tgz#25edb31585b369efdc103e9a1eb822df9c235174"
+  integrity sha512-zw/wn0sj0j0QKbIXfIlnEcTviaCzYOY3V5rAyjR6YtOByFtJiT574+8p9Wlach0lZH9fddD4yb9laEAIl4vXQA==
+  dependencies:
+    "@oslojs/binary" "1.0.0"
+
+"@oslojs/binary@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@oslojs/binary/-/binary-1.0.0.tgz#3e73f9cef0d06731d2aa528066666ccc00d610d6"
+  integrity sha512-9RCU6OwXU6p67H4NODbuxv2S3eenuQ4/WFLrsq+K/k682xrznH5EVWA7N4VFk9VYVcbFtKqur5YQQZc0ySGhsQ==
+
+"@oslojs/crypto@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@oslojs/crypto/-/crypto-1.0.1.tgz#74cf0d19d9fcda7cf5648cf3188dfeaf1d1b039f"
+  integrity sha512-7n08G8nWjAr/Yu3vu9zzrd0L9XnrJfpMioQcvCMxBIiF5orECHe5/3J0jmXRVvgfqMm/+4oxlQ+Sq39COYLcNQ==
+  dependencies:
+    "@oslojs/asn1" "1.0.0"
+    "@oslojs/binary" "1.0.0"
+
+"@oslojs/encoding@0.4.1":
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/@oslojs/encoding/-/encoding-0.4.1.tgz#1489e560041533214511e9e03626962d24e58e9f"
+  integrity sha512-hkjo6MuIK/kQR5CrGNdAPZhS01ZCXuWDRJ187zh6qqF2+yMHZpD9fAYpX8q2bOO6Ryhl3XpCT6kUX76N8hhm4Q==
+
+"@oslojs/encoding@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@oslojs/encoding/-/encoding-1.1.0.tgz#55f3d9a597430a01f2a5ef63c6b42f769f9ce34e"
+  integrity sha512-70wQhgYmndg4GCPxPPxPGevRKqTIJ2Nh4OkiMWmDAVYsTQ+Ta7Sq+rPevXyXGdzr30/qZBnyOalCszoMxlyldQ==
+
+"@oslojs/jwt@0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@oslojs/jwt/-/jwt-0.2.0.tgz#cdcd51e562eed2e536d273c840e90648c2d4a54a"
+  integrity sha512-bLE7BtHrURedCn4Mco3ma9L4Y1GR2SMBuIvjWr7rmQ4/W/4Jy70TIAgZ+0nIlk0xHz1vNP8x8DCns45Sb2XRbg==
+  dependencies:
+    "@oslojs/encoding" "0.4.1"
 
 "@pkgjs/parseargs@^0.11.0":
   version "0.11.0"
@@ -1980,6 +2027,15 @@ anymatch@~3.1.2:
     normalize-path "^3.0.0"
     picomatch "^2.0.4"
 
+arctic@^3.0.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/arctic/-/arctic-3.6.0.tgz#d46e35a5a305ff265d5d4d9537c08c0dc77b12c6"
+  integrity sha512-egHDsCqEacb6oSHz5QSSxNhp07J+QJwJdPvs0katL+mNM5LaGQVqxmcdq1KwfaSNSAlVumBBs0MRExS88TxbMg==
+  dependencies:
+    "@oslojs/crypto" "1.0.1"
+    "@oslojs/encoding" "1.1.0"
+    "@oslojs/jwt" "0.2.0"
+
 arg@^5.0.1, arg@^5.0.2:
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/arg/-/arg-5.0.2.tgz#c81433cc427c92c4dcf4865142dbca6f15acd59c"
@@ -2594,7 +2650,7 @@ debug@^3.2.7:
   dependencies:
     ms "^2.1.1"
 
-debug@^4.0.0, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2, debug@^4.3.4, debug@^4.4.0:
+debug@^4.0.0, debug@^4.1.0, debug@^4.1.1, debug@^4.3.1, debug@^4.3.2, debug@^4.3.4, debug@^4.3.7, debug@^4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-4.4.0.tgz#2b3f2aea2ffeb776477460267377dc8710faba8a"
   integrity sha512-6WTZ/IxCY/T6BALoZHaE4ctp9xm+Z5kY/pzYaCHRFeyVhojxlrm+46y68HA6hr0TcwEssoxNiDEUJQjfPZ/RYA==
@@ -5914,6 +5970,21 @@ remark-rehype@^10.0.0:
     mdast-util-to-hast "^12.1.0"
     unified "^10.0.0"
 
+remix-auth-oauth2@^3.4.0:
+  version "3.4.0"
+  resolved "https://registry.yarnpkg.com/remix-auth-oauth2/-/remix-auth-oauth2-3.4.0.tgz#89b61d2140ee0618578c0aee606acadd5f29f656"
+  integrity sha512-aU2TfxqQcJTV3pt7bwXCqUtemE+nXSJnIcWdlCRDUrH+1bwj9WXOkteCOx17fq9xfeXsGpt9xOKasrPoBpjelw==
+  dependencies:
+    "@edgefirst-dev/data" "^0.0.4"
+    "@mjackson/headers" "^0.10.0"
+    arctic "^3.0.0"
+    debug "^4.3.7"
+
+remix-auth@^4.2.0:
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/remix-auth/-/remix-auth-4.2.0.tgz#4a8476c6fc7bb7f4bfb827f320a7e0592291678f"
+  integrity sha512-3LSfWEvSgG2CgbG/p4ge5hbV8tTXWNnnYIGbTr9oSSiHz9dD7wh6S0MEyo3pwh7MlKezB2WIlevGeyqUZykk7g==
+
 "require-like@>= 0.1.1":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/require-like/-/require-like-0.1.2.tgz#ad6f30c13becd797010c468afa775c0c0a6b47fa"
@@ -6320,6 +6391,7 @@ string-hash@^1.1.3:
   integrity sha512-kJUvRUFK49aub+a7T1nNE66EJbZBMnBgoC1UbCZ5n6bsZKBRga4KgBRTMn/pFkeCZSYtNeSyMxPDM0AXWELk2A==
 
 "string-width-cjs@npm:string-width@^4.2.0", string-width@^4.1.0:
+  name string-width-cjs
   version "4.2.3"
   resolved "https://registry.yarnpkg.com/string-width/-/string-width-4.2.3.tgz#269c7117d27b05ad2e536830a8ec895ef9c6d010"
   integrity sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==
