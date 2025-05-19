@@ -61,9 +61,9 @@ export default function Professor ({ className }: AllProfessorsProps) {
         <h2 className={'text-xl font-medium text-gray-500'}>Histórico de disciplinas</h2>
         <ul className={'pt-2 space-y-1'}>
           {getTaughtCourses().map(course => (
-            <li key={course.id} className={'text-gray-700 hover:hover:text-blue-600 transition-colors'}>
+            <li key={course.id + course.year} className={'text-gray-700 hover:hover:text-blue-600 transition-colors'}>
               <Link className={'flex justify-between'} to={`/disciplines/${course.id}`}>
-                <p>{course.name}</p>
+                <p>{title(course.name)}</p>
                 <p>{course.year}</p>
               </Link>
             </li>
@@ -86,6 +86,12 @@ export default function Professor ({ className }: AllProfessorsProps) {
             - Ver menos...
           </button>
         }
+      </div>
+      <Separator/>
+    {/*  Comments section  */}
+    {/*  https://dribbble.com/shots/24927567-Comments-Section */}
+      <div>
+      
       </div>
     </section>
   </main>
