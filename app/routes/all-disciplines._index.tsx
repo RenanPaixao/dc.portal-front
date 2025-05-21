@@ -69,6 +69,7 @@ export default function AllDisciplines ({ className }: AllDisciplinesProps) {
         <PaginationContent>
           <PaginationItem>
             <PaginationPrevious
+              replace
               className={cn({ 'opacity-50 pointer-events-none': currentPage === 1 })}
               href={buildSearchParam(currentPage - 1)}
             />
@@ -80,6 +81,7 @@ export default function AllDisciplines ({ className }: AllDisciplinesProps) {
           </PaginationItem>
           <PaginationItem>
             <PaginationNext
+              replace
               className={cn({ 'opacity-50 pointer-events-none': currentPage === totalPages })}
               href={buildSearchParam(currentPage + 1)}
             />

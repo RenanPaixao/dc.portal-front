@@ -68,7 +68,7 @@ export default function AllProfessors ({ className }: AllProfessorsProps) {
         <Pagination className={'bottom-0 right-0 fixed  bg-white py-6 shadow-[rgba(0,0,15,0.1)_0px_-2px_1px_0px]'}>
           <PaginationContent>
             <PaginationItem>
-              <PaginationPrevious className={cn({'opacity-50 pointer-events-none': currentPage === 1})} href={buildSearchParam(currentPage - 1)} />
+              <PaginationPrevious replace className={cn({'opacity-50 pointer-events-none': currentPage === 1})} href={buildSearchParam(currentPage - 1)} />
             </PaginationItem>
             <PaginationItem className={'pointer-events-none'}>
               <PaginationLink href="#" isActive>
@@ -76,7 +76,7 @@ export default function AllProfessors ({ className }: AllProfessorsProps) {
               </PaginationLink>
             </PaginationItem>
             <PaginationItem>
-              <PaginationNext className={cn({'opacity-50 pointer-events-none': currentPage === totalPages})} href={buildSearchParam(currentPage + 1)} />
+              <PaginationNext replace className={cn({'opacity-50 pointer-events-none': currentPage === totalPages})} href={buildSearchParam(currentPage + 1)} />
             </PaginationItem>
           </PaginationContent>
         </Pagination>
