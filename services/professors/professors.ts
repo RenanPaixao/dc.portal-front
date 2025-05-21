@@ -9,8 +9,16 @@ export interface Professor	{
   "profileImg": string | null
 }
 
-export interface ProfessorCourse extends Course{
-  year: string,
+interface CoursesProfessor {
+  "id": string,
+  "courseId": string,
+  "professorId": string,
+  "year": string
+}
+
+export interface ProfessorCourse {
+  courses: Course
+  coursesProfessors: CoursesProfessor
 }
 
 interface GetAllProfessorsResponse {

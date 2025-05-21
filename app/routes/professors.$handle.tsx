@@ -60,11 +60,11 @@ export default function Professor ({ className }: AllProfessorsProps) {
       <div>
         <h2 className={'text-xl font-medium text-gray-500'}>Histórico de disciplinas</h2>
         <ul className={'pt-2 space-y-1'}>
-          {getTaughtCourses().map(course => (
-            <li key={course.id + course.year} className={'text-gray-700 hover:hover:text-blue-600 transition-colors'}>
-              <Link className={'flex justify-between'} to={`/disciplines/${course.id}`}>
-                <p>{title(course.name)}</p>
-                <p>{course.year}</p>
+          {getTaughtCourses().map(({courses, coursesProfessors}) => (
+            <li key={courses.id + coursesProfessors.year} className={'text-gray-700 hover:hover:text-blue-600 transition-colors'}>
+              <Link className={'flex justify-between'} to={`/disciplines/${courses.id}`}>
+                <p>{title(courses.name)}</p>
+                <p>{coursesProfessors.year}</p>
               </Link>
             </li>
           ))}
