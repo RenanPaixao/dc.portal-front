@@ -5,7 +5,7 @@ import {
   PaginationItem, PaginationLink,
   PaginationNext, PaginationPrevious
 } from '~/components/common/Pagination/Pagination'
-import { useLoaderData } from '@remix-run/react'
+import { useLoaderData, useNavigate } from '@remix-run/react'
 import { cn } from '@/lib/utils'
 import { getAllCourses } from '@/services/courses/courses'
 import { FeatureBox } from '~/components/common/FeatureBox'
@@ -38,6 +38,7 @@ export async function loader({request}: LoaderFunctionArgs) {
 
 export default function AllDisciplines ({ className }: AllDisciplinesProps) {
   const {currentPage, limit, courses, totalPages} = useLoaderData<typeof loader>()
+  const navigate = useNavigate()
   
   const buildSearchParam = (page: number) => {
     const offset = (page - 1) * limit
@@ -53,6 +54,7 @@ export default function AllDisciplines ({ className }: AllDisciplinesProps) {
             {
               courses.map(course => (
                 <FeatureBox
+                  onClick={() => navigate(`/disciplines/${course.id}`)}
                   key={course.id}
                   name={title(course.name)}
                   description={course.description}
