@@ -6,6 +6,7 @@ import profile from '~/assets/profile.svg'
 import { title } from 'radash'
 import { Separator } from '~/components/common/Separator/Separator'
 import { useState } from 'react'
+import { clsx } from 'clsx'
 
 
 interface AllProfessorsProps {
@@ -47,7 +48,7 @@ export default function Professor ({ className }: AllProfessorsProps) {
   
   return <main className={className}>
     <section className={'max-w-3xl mx-auto border rounded-xl space-y-4 px-24 py-20'}>
-      <img className={'size-28 rounded-full'} src={professor.profileImg ?? profile} alt={`imagem de perfil`}/>
+      <img className={clsx('size-28 rounded-full', {'border-4': !!professor.profileImg})} src={professor.profileImg ?? profile} alt={`imagem de perfil`}/>
       <h1 className={'text-3xl font-semibold'}>{title(professor.name)}</h1>
       <Separator/>
       
